@@ -1,4 +1,4 @@
-package virtualsetup;
+package appium;
 
 
 import com.google.common.collect.ImmutableMap;

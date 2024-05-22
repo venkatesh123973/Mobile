@@ -1,4 +1,4 @@
-package virtualsetup;
+package appium;
 
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;

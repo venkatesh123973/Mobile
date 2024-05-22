@@ -1,6 +1,5 @@
-package virtualsetup;
+package appium;
 
-import io.appium.java_client.PerformsActions;
 import io.appium.java_client.TouchAction;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;

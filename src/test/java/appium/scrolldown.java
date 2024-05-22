@@ -1,4 +1,4 @@
-package virtualsetup;
+package appium;
 
 import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumBy;
@@ -9,7 +9,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class scrolldown {
