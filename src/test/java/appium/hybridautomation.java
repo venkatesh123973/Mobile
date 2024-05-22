@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import java.util.Set;
 
-public class hybridautomation extends base{
+public class hybridautomation extends base {
 
     @Test
     public void letsshop() throws InterruptedException {
@@ -23,10 +23,10 @@ public class hybridautomation extends base{
         driver.findElement(By.id("com.androidsample.generalstore:id/appbar_btn_cart")).click();
         driver.findElement(By.id("com.androidsample.generalstore:id/btnProceed")).click();
         Thread.sleep(5000);
-        Set<String> contextname=driver.getContextHandles();
-//        for(String contet:contextname){
-//            System.out.println(contet);
-//        }
+        Set<String> contextname = driver.getContextHandles();
+        for (String contet : contextname) {
+            System.out.println(contet);
+        }
 
         driver.context("WEBVIEW_com.androidsample.generalstore");
         Thread.sleep(5000);
@@ -34,9 +34,8 @@ public class hybridautomation extends base{
         driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
         driver.pressKey(new KeyEvent(AndroidKey.BACK));
         driver.context("NATIVE_APP");
-       stoprecording();
+        stoprecording();
 
 
-        
     }
 }

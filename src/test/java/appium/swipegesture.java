@@ -13,6 +13,7 @@ public class swipegesture extends base {
 
     @Test
     public void swipe(){
+        startrecording();
         driver.findElement(By.xpath("//android.widget.TextView[@content-desc=\"Views\"]")).click();
         scrollelement("Gallery");
         driver.findElement(AppiumBy.accessibilityId("1. Photos")).click();
@@ -21,7 +22,7 @@ public class swipegesture extends base {
         Assert.assertEquals("true",foc);
         ((JavascriptExecutor)driver).executeScript("mobile:swipeGesture", ImmutableMap.of("elementId",(RemoteWebElement) firstimage,"direction","left","percent",0.75));
         Assert.assertEquals("false",foc);
-
+        stoprecording();
 
     }
 }

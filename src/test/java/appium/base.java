@@ -3,9 +3,13 @@ package appium;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.screenrecording.CanRecordScreen;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -16,19 +20,13 @@ import java.util.Base64;
 
 public class base {
     public AndroidDriver driver;
-//    public static void main(String[] args) throws MalformedURLException {
-//        beforesetup set= new beforesetup();
-//        set.setup();
-//    }
+    AppiumDriverLocalService service;
     @BeforeSuite
     public void setup() throws MalformedURLException {
-//        AppiumDriverLocalService service = new AppiumServiceBuilder().withAppiumJS(new File("C:\\Users\\venka\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js"))
-//                .withIPAddress("127.0.0.1").usingPort(4723).withArgument(() -> "--base-path", "/").withTimeout(Duration.ofSeconds(300)).build();
-////
-//        service.start();
+         service = new AppiumServiceBuilder().withAppiumJS(new File("C:\\Users\\venka\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js"))
+                .withIPAddress("127.0.0.1").usingPort(4723).withArgument(() -> "--base-path", "/").withTimeout(Duration.ofSeconds(300)).build();
+         service.start();
         DesiredCapabilities capabilities = new DesiredCapabilities();
-//        UiAutomator2Options op = new UiAutomator2Options();
-
         capabilities.setCapability("platformName","Android");
         capabilities.setCapability("automationName","Uiautomator2");
         capabilities.setCapability("platformVersion","14.0");
@@ -41,6 +39,11 @@ public class base {
          driver = new AndroidDriver(url,capabilities);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1000));
 
+    }
+
+    @AfterSuite
+    public void tearDown(){
+        service.stop();
     }
 
     public void scrollelement(String ele){
